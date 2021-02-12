@@ -1,0 +1,51 @@
+{
+  "name": "mobizon-br",
+  "version": "0.1.2",
+  "description": "Mobizon é um poderoso gateway de SMS e ferramentas de marketing online",
+  "readmeFilename": "README.MD",
+  "main": "src/index.js",
+  "license": "MIT",
+  "keywords": [
+    "mobizon",
+    "sms",
+    "api",
+    "gateway",
+    "messaging",
+    "A2P"
+  ],
+  "author": {
+    "name": "Caio Agiani",
+    "email": "caio.agiani@mobizon.com.br",
+    "homepage": "https://mobizon.com.br"
+  },
+  "contributors": [
+    {
+      "name": "Caio Agiani",
+      "email": "caio.agiani@mobizon.com.br",
+      "url": "https://mobizon.com.br"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caioagiani/mobizon-br"
+  },
+  "scripts": {
+    "lint": "eslint . --ext .js",
+    "test": "jest --setupFiles dotenv/config --detectOpenHandles --forceExit",
+    "test:clear": "jest --clearCache"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "jest": "^26.6.3"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-import-helpers": "^1.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1"
+  }
+}
