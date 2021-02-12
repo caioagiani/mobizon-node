@@ -1,4 +1,4 @@
-const mobizon = require('./src/index');
+const mobizon = require('mobizon-br');
 
 mobizon.setKey(process.env.API_KEY);
 
