@@ -1,8 +1,8 @@
 {
   "name": "mobizon-br",
-  "version": "0.1.2",
-  "description": "Mobizon é um poderoso gateway de SMS e ferramentas de marketing online",
-  "readmeFilename": "README.MD",
+  "version": "0.2.0",
+  "description": "Mobizon é um poderoso gateway de SMS e ferramentas de marketing online.",
+  "readmeFilename": "README.md",
   "main": "src/index.js",
   "license": "MIT",
   "keywords": [
