@@ -1,9 +1,13 @@
 const mobizon = require('../src/index');
 
-mobizon.setKey(process.env.API_KEY);
+mobizon.setConfig({
+  apiServer: 'https://api.mobizon.com.br',
+  apiKey: process.env.API_KEY,
+  format: 'json',
+});
 
 const recipient = process.env.NUMBER;
-const responseValues = { id_short: [], id_sms: [] };
+const responseValues = { id_short: [], code_short: '', id_sms: [] };
 
 describe('Mobizon feature tests', () => {
   it('should receive the account balance', async () => {
@@ -29,11 +33,43 @@ describe('Mobizon feature tests', () => {
     const response = await mobizon.short(options);
 
     responseValues.id_short.push(response.data.id);
+    responseValues.code_short = response.data.code;
 
     expect(response.data.shortLink).toEqual(expect.any(String));
     expect(response).toEqual({
       code: expect.any(Number),
       data: expect.any(Object),
+      message: expect.any(String),
+    });
+  });
+
+  it('should get short link', async () => {
+    const response = await mobizon.shortGet(responseValues.code_short);
+
+    expect(response.data.shortLink).toEqual(expect.any(String));
+    expect(response).toEqual({
+      code: expect.any(Number),
+      data: expect.any(Object),
+      message: expect.any(String),
+    });
+  });
+
+  it('should update short link', async () => {
+    const options = {
+      id: responseValues.id_short[0],
+      data: {
+        status: 0,
+        expirationDate: '',
+        comment: 'Link atualizado.',
+      },
+    };
+
+    const response = await mobizon.shortUpdate(options);
+
+    expect(response.data).toEqual(expect.any(Boolean));
+    expect(response).toEqual({
+      code: expect.any(Number),
+      data: expect.any(Boolean),
       message: expect.any(String),
     });
   });

@@ -1,34 +1,36 @@
-const { get, post } = require('../utils/request');
+const { mobizonUrl } = require('../services/mobizon');
 const { urlEncode } = require('../utils/url');
 
 module.exports = {
-  async send({ recipient, from, text }) {
+  send({ recipient, from, text }) {
     const query = {
       recipient,
       from,
       text,
-      apiKey: this.environment.apiKey,
     };
 
     const queryParams = urlEncode(query);
 
-    const { data } = await get.call(
+    const smsSend = mobizonUrl.call(
       this,
-      `${this.environment.pathSmsSend}?${queryParams}`
+      'message',
+      'sendsmsmessage',
+      null,
+      queryParams
     );
 
-    return data;
+    return smsSend;
   },
-  async list(body) {
-    const { data } = await post.call(this, this.environment.pathSmsList, body);
+  list(body) {
+    const smsList = mobizonUrl.call(this, 'message', 'list', body);
 
-    return data;
+    return smsList;
   },
-  async get(ids) {
-    const { data } = await post.call(this, this.environment.pathSmsGet, {
-      ids,
-    });
+  get(ids) {
+    const body = { ids };
 
-    return data;
+    const smsGet = mobizonUrl.call(this, 'message', 'getsmsstatus', body);
+
+    return smsGet;
   },
 };

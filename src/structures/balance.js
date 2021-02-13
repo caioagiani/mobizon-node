@@ -1,12 +1,9 @@
-const { get } = require('../utils/request');
+const { mobizonUrl } = require('../services/mobizon');
 
 module.exports = {
-  async get() {
-    const { data } = await get.call(
-      this,
-      `${this.environment.pathBalance}?apiKey=${this.environment.apiKey}`
-    );
+  get() {
+    const getBalance = mobizonUrl.call(this, 'user', 'getownbalance');
 
-    return data;
+    return getBalance;
   },
 };

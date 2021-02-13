@@ -1,7 +1,7 @@
-const { post } = require('../utils/request');
+const { mobizonUrl } = require('../services/mobizon');
 
 module.exports = {
-  async create({ fullLink, expirationDate, comment }) {
+  create({ fullLink, expirationDate, comment }) {
     const body = {
       data: {
         fullLink,
@@ -11,21 +11,27 @@ module.exports = {
       },
     };
 
-    const { data } = await post.call(
-      this,
-      this.environment.pathShortLink,
-      body
-    );
+    const shortCreate = mobizonUrl.call(this, 'link', 'create', body);
 
-    return data;
+    return shortCreate;
   },
-  async delete(ids) {
-    const { data } = await post.call(
-      this,
-      this.environment.pathShortLinkDelete,
-      { ids }
-    );
+  delete(ids) {
+    const body = { ids };
 
-    return data;
+    const shortDelete = mobizonUrl.call(this, 'link', 'delete', body);
+
+    return shortDelete;
+  },
+  get(id) {
+    const body = { code: id };
+
+    const shortGet = mobizonUrl.call(this, 'link', 'get', body);
+
+    return shortGet;
+  },
+  update(body) {
+    const shortGet = mobizonUrl.call(this, 'link', 'update', body);
+
+    return shortGet;
   },
 };

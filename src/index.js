@@ -5,25 +5,33 @@ const sms = require('./structures/sms');
 
 module.exports = {
   environment,
-  setKey(key) {
-    this.environment.apiKey = key;
+  setConfig({ apiServer, apiKey, format }) {
+    this.environment.apiKey = apiKey;
+    this.environment.format = format || 'json';
+    this.environment.apiServer = apiServer;
   },
-  async getBalance() {
+  getBalance() {
     return balance.get.call(this);
   },
-  async short(data) {
+  short(data) {
     return short.create.call(this, data);
   },
-  async shortDelete(data) {
+  shortDelete(data) {
     return short.delete.call(this, data);
   },
-  async sendSms(data) {
+  shortGet(data) {
+    return short.get.call(this, data);
+  },
+  shortUpdate(data) {
+    return short.update.call(this, data);
+  },
+  sendSms(data) {
     return sms.send.call(this, data);
   },
-  async listSms(data) {
+  listSms(data) {
     return sms.list.call(this, data);
   },
-  async getSms(data) {
+  getSms(data) {
     return sms.get.call(this, data);
   },
 };

@@ -1,18 +1,21 @@
 const mobizon = require('mobizon-br');
 
-mobizon.setKey(process.env.API_KEY);
+mobizon.setConfig({
+  /** Endpoint do serviço. */
+  apiServer: 'https://api.mobizon.com.br',
+  /** Chave de acesso do usuário. */
+  apiKey: process.env.API_KEY,
+  /** Retorno da requisição (json, xml), por padrão é json. */
+  format: 'json',
+});
 
 (async () => {
-  /**
-   * OBTER SALDO API
-   */
+  /** Obter saldo */
   const getBalance = await mobizon.getBalance();
 
   console.log(getBalance);
 
-  /**
-   * ENCURTAR LINK
-   */
+  /** Encurtar URL */
   const short = await mobizon.short({
     fullLink: 'https://mobizon.com.br',
     status: 1,
@@ -22,16 +25,29 @@ mobizon.setKey(process.env.API_KEY);
 
   console.log(short);
 
-  /**
-   * DELETAR LINK CURTO
-   */
+  /** Listar link curto */
+  const shortGet = await mobizon.shortGet('05xxi');
+
+  console.log(shortGet);
+
+  /** Atualizar link curto */
+  const shortUpdate = await mobizon.shortUpdate({
+    id: '626',
+    data: {
+      status: 0,
+      expirationDate: '',
+      comment: 'Link atualizado.',
+    },
+  });
+
+  console.log(shortUpdate);
+
+  /** Deletar link encurtado by ID */
   const shortDelete = await mobizon.shortDelete(['532']);
 
   console.log(shortDelete);
 
-  /**
-   * ENVIAR SMS
-   */
+  /** Enviar SMS */
   const sendSms = await mobizon.sendSms({
     recipient: process.env.NUMBER,
     from: '',
@@ -40,16 +56,12 @@ mobizon.setKey(process.env.API_KEY);
 
   console.log(sendSms);
 
-  /**
-   * LISTAR SMS PELO ID
-   */
+  /** Listar SMS por ID */
   const getSms = await mobizon.getSms(['49567', '49566']);
 
   console.log(getSms);
 
-  /**
-   * LISTAR TODOS SMS ENVIADOS
-   */
+  /** Listar todos os SMS enviados */
   const listSms = await mobizon.listSms({
     criteria: {
       from: '',
