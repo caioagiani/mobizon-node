@@ -1,7 +1,7 @@
 module.exports = {
   urlEncode(query) {
     const queryEncode = Object.keys(query)
-      .map((k) => `${encodeURIComponent(k)}=${encodeURIComponent(query[k])}`)
+      .map((key) => `${key}=${query[key]}`)
       .join('&');
 
     return queryEncode;

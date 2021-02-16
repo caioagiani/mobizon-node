@@ -4,8 +4,8 @@ const https = require('https');
 const { urlEncode } = require('../utils/url');
 
 module.exports = {
-  async mobizonUrl(provider, method, postParams, queryParams) {
-    const mobizonUrl = axios.create({
+  async mobizon(provider, method, postParams, queryParams) {
+    const request = axios.create({
       baseURL: this.environment.apiServer,
       headers: { 'Content-Type': 'application/json' },
       httpsAgent: new https.Agent({
@@ -17,7 +17,7 @@ module.exports = {
     const queryDefault = urlEncode(loadQuery);
 
     if (postParams) {
-      const { data } = await mobizonUrl.post(
+      const { data } = await request.post(
         `/service/${provider}/${method}?${queryDefault}`,
         postParams
       );
@@ -27,7 +27,7 @@ module.exports = {
 
     const query = queryParams ? `${queryParams}&${queryDefault}` : queryDefault;
 
-    const { data } = await mobizonUrl.get(
+    const { data } = await request.get(
       `/service/${provider}/${method}?${query}`
     );
 

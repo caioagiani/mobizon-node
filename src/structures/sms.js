@@ -1,4 +1,4 @@
-const { mobizonUrl } = require('../services/mobizon');
+const { mobizon } = require('../services/mobizon');
 const { urlEncode } = require('../utils/url');
 
 module.exports = {
@@ -11,26 +11,14 @@ module.exports = {
 
     const queryParams = urlEncode(query);
 
-    const smsSend = mobizonUrl.call(
-      this,
-      'message',
-      'sendsmsmessage',
-      null,
-      queryParams
-    );
-
-    return smsSend;
+    return mobizon.call(this, 'message', 'sendsmsmessage', null, queryParams);
   },
   list(body) {
-    const smsList = mobizonUrl.call(this, 'message', 'list', body);
-
-    return smsList;
+    return mobizon.call(this, 'message', 'list', body);
   },
   get(ids) {
     const body = { ids };
 
-    const smsGet = mobizonUrl.call(this, 'message', 'getsmsstatus', body);
-
-    return smsGet;
+    return mobizon.call(this, 'message', 'getsmsstatus', body);
   },
 };

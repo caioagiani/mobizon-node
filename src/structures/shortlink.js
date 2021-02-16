@@ -1,4 +1,4 @@
-const { mobizonUrl } = require('../services/mobizon');
+const { mobizon } = require('../services/mobizon');
 
 module.exports = {
   create({ fullLink, expirationDate, comment }) {
@@ -11,27 +11,19 @@ module.exports = {
       },
     };
 
-    const shortCreate = mobizonUrl.call(this, 'link', 'create', body);
-
-    return shortCreate;
+    return mobizon.call(this, 'link', 'create', body);
   },
   delete(ids) {
     const body = { ids };
 
-    const shortDelete = mobizonUrl.call(this, 'link', 'delete', body);
-
-    return shortDelete;
+    return mobizon.call(this, 'link', 'delete', body);
   },
   get(id) {
     const body = { code: id };
 
-    const shortGet = mobizonUrl.call(this, 'link', 'get', body);
-
-    return shortGet;
+    return mobizon.call(this, 'link', 'get', body);
   },
   update(body) {
-    const shortGet = mobizonUrl.call(this, 'link', 'update', body);
-
-    return shortGet;
+    return mobizon.call(this, 'link', 'update', body);
   },
 };
