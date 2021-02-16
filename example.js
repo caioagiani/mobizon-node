@@ -1,4 +1,4 @@
-const mobizon = require('mobizon-br');
+const mobizon = require('mobizon-node');
 
 mobizon.setConfig({
   /** Endpoint do serviço. */
@@ -20,7 +20,7 @@ mobizon.setConfig({
     fullLink: 'https://mobizon.com.br',
     status: 1,
     expirationDate: '',
-    comment: 'MobizonBR',
+    comment: 'Mobizon',
   });
 
   console.log(short);
@@ -51,7 +51,7 @@ mobizon.setConfig({
   const sendSms = await mobizon.sendSms({
     recipient: process.env.NUMBER,
     from: '',
-    text: 'MobizonBR',
+    text: 'Mobizon',
   });
 
   console.log(sendSms);

@@ -1,6 +1,6 @@
 {
-  "name": "mobizon-br",
-  "version": "0.2.0",
+  "name": "mobizon-node",
+  "version": "0.2.2",
   "description": "Mobizon é um poderoso gateway de SMS e ferramentas de marketing online.",
   "readmeFilename": "README.md",
   "main": "src/index.js",
@@ -27,17 +27,20 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caioagiani/mobizon-br"
+    "url": "git+https://github.com/caioagiani/mobizon-node"
+  },
+  "bugs": {
+    "url": "https://github.com/caioagiani/mobizon-node/issues"
   },
   "scripts": {
     "lint": "eslint . --ext .js",
-    "test": "jest --setupFiles dotenv/config --detectOpenHandles --forceExit",
+    "test": "yarn lint && jest --setupFiles dotenv/config --detectOpenHandles --forceExit",
     "test:clear": "jest --clearCache"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "jest": "^26.6.3",
-    "mobizon-br": "^0.1.2"
+    "mobizon-node": "^0.2.2"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

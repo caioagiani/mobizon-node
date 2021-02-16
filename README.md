@@ -7,16 +7,16 @@
 
 <p align="center">
   <a href="https://mobizon.com.br">
-    <img src=".github/default.svg" width="60%" alt="MobizonBR" title="MobizonBR">
+    <img src=".github/default.svg" width="60%" alt="Mobizon" title="Mobizon">
   </a>
 </p>
 
 <h2 align="center">Biblioteca para comunicação API HTTP Mobizon SMS</h2>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/caioagiani/mobizon-br">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/caioagiani/mobizon-br">
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/caioagiani/mobizon-br">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/caioagiani/mobizon-node">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/caioagiani/mobizon-node">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/caioagiani/mobizon-node">
   <img alt="GitHub license" src="https://img.shields.io/badge/license-MIT-blue.svg">
 </p>
 
@@ -24,12 +24,12 @@
 
 Baixe o node em [nodejs.org](http://nodejs.org) e instale-o, caso ainda não tenha,
 
-Pacote: `npm i mobizon-br` ou `yarn add mobizon-br`
+Pacote: `npm i mobizon-node` ou `yarn add mobizon-node`
 
 ## Configuração:
 
 ```js
-const mobizon = require('mobizon-br');
+const mobizon = require('mobizon-node');
 
 mobizon.setConfig({
   apiServer: 'https://api.mobizon.com.br',
@@ -40,7 +40,7 @@ mobizon.setConfig({
 
 ## Exemplos de uso
 
-Confira em [docs](https://github.com/caioagiani/mobizon-br/blob/master/docs) todos os response status code.
+Confira em [docs](https://github.com/caioagiani/mobizon-node/blob/master/docs) todos os response status code.
 
 ```js
 (async () => {
@@ -54,7 +54,7 @@ Confira em [docs](https://github.com/caioagiani/mobizon-br/blob/master/docs) tod
     fullLink: 'https://mobizon.com.br',
     status: 1,
     expirationDate: '',
-    comment: 'MobizonBR',
+    comment: 'Mobizon',
   });
 
   console.log(short);
@@ -63,14 +63,14 @@ Confira em [docs](https://github.com/caioagiani/mobizon-br/blob/master/docs) tod
   const sendSms = await mobizon.sendSms({
     recipient: process.env.NUMBER,
     from: '',
-    text: 'MobizonBR',
+    text: 'Mobizon',
   });
 
   console.log(sendSms);
 })();
 ```
 
-Dê uma olhada em [example.js](https://github.com/caioagiani/mobizon-br/blob/master/example.js) para mais casos de uso.
+Dê uma olhada em [example.js](https://github.com/caioagiani/mobizon-node/blob/master/example.js) para mais casos de uso.
 
 ## Testes
 
@@ -98,4 +98,4 @@ Done in 4.65s.
 ## Licença
 
 Copyright © 2021 [caioagiani](https://github.com/caioagiani).<br />
-Este projeto é licenciado [MIT](https://github.com/caioagiani/mobizon-br/blob/master/LICENSE).
+Este projeto é licenciado [MIT](https://github.com/caioagiani/mobizon-node/blob/master/LICENSE).
