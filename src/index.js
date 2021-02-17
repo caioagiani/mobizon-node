@@ -13,7 +13,7 @@ module.exports = {
   getBalance() {
     return balance.get.call(this);
   },
-  short(data) {
+  shortCreate(data) {
     return short.create.call(this, data);
   },
   shortDelete(data) {

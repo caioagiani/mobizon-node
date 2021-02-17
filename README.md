@@ -50,11 +50,11 @@ Confira em [docs](https://github.com/caioagiani/mobizon-node/blob/master/docs) t
   console.log(getBalance);
 
   /** Encurtar URL */
-  const short = await mobizon.short({
+  const short = await mobizon.shortCreate({
     fullLink: 'https://mobizon.com.br',
     status: 1,
     expirationDate: '',
-    comment: 'Mobizon',
+    comment: 'Shortened link.',
   });
 
   console.log(short);
@@ -63,7 +63,7 @@ Confira em [docs](https://github.com/caioagiani/mobizon-node/blob/master/docs) t
   const sendSms = await mobizon.sendSms({
     recipient: process.env.NUMBER,
     from: '',
-    text: 'Mobizon',
+    text: 'SMS sent by Mobizon.',
   });
 
   console.log(sendSms);
@@ -75,24 +75,18 @@ Dê uma olhada em [example.js](https://github.com/caioagiani/mobizon-node/blob/m
 ## Testes
 
 ```javascript
- jest --setupFiles dotenv/config --detectOpenHandles --forceExit
- PASS  tests/mobizon.test.js
-  Mobizon feature tests
-    ✓ should receive the account balance (323 ms)
-    ✓ should create short link (447 ms)
-    ✓ should get short link (349 ms)
-    ✓ should update short link (325 ms)
-    ✓ should delete short link (390 ms)
-    ✓ should send a test sms (610 ms)
-    ✓ should list the sms sent by id (312 ms)
-    ✓ should list the all sms sent (762 ms)
+yarn lint && jest --setupFiles dotenv/config --detectOpenHandles --forceExit
+$ eslint . --ext .js
+ PASS  __tests__/shortlink.test.js
+ PASS  __tests__/sms.test.js
+ PASS  __tests__/balance.test.js
 
-Test Suites: 1 passed, 1 total
-Tests:       8 passed, 8 total
+Test Suites: 3 passed, 3 total
+Tests:       14 passed, 14 total
 Snapshots:   0 total
-Time:        4.208 s
+Time:        7.013 s
 Ran all test suites.
-Done in 4.65s.
+Done in 8.41s.
 ```
 
 ## Licença

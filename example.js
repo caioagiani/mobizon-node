@@ -16,11 +16,11 @@ mobizon.setConfig({
   console.log(getBalance);
 
   /** Encurtar URL */
-  const short = await mobizon.short({
+  const short = await mobizon.shortCreate({
     fullLink: 'https://mobizon.com.br',
     status: 1,
     expirationDate: '',
-    comment: 'Mobizon',
+    comment: 'Shortened link.',
   });
 
   console.log(short);
@@ -36,7 +36,7 @@ mobizon.setConfig({
     data: {
       status: 0,
       expirationDate: '',
-      comment: 'Link atualizado.',
+      comment: 'Updated link.',
     },
   });
 
@@ -51,7 +51,7 @@ mobizon.setConfig({
   const sendSms = await mobizon.sendSms({
     recipient: process.env.NUMBER,
     from: '',
-    text: 'Mobizon',
+    text: 'SMS sent by Mobizon.',
   });
 
   console.log(sendSms);
