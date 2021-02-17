@@ -3,5 +3,5 @@ module.exports = {
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
   testEnvironment: 'node',
-  testMatch: ['**/tests/**/*.test.js?(x)'],
+  testMatch: ['**/__tests__/**/*.test.js?(x)'],
 };
