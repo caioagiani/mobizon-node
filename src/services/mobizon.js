@@ -1,36 +1,44 @@
-const axios = require('axios');
-const https = require('https');
+import { create } from 'axios';
+import { Agent } from 'https';
+import { stringify } from 'qs';
 
-const { urlEncode } = require('../utils/url');
+import environment from '../environment';
 
-module.exports = {
-  async mobizon(provider, method, postParams, queryParams) {
-    const request = axios.create({
-      baseURL: this.environment.apiServer,
-      headers: { 'Content-Type': 'application/json' },
-      httpsAgent: new https.Agent({
-        rejectUnauthorized: false,
-      }),
-    });
+export default async (provider, method, postParams, queryParams) => {
+  const { format, apiVersion, apiKey, apiServer } = environment;
 
-    const loadQuery = this.environment.defaultQuery();
-    const queryDefault = urlEncode(loadQuery);
+  const request = create({
+    baseURL: `${apiServer}/service`,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    httpsAgent: new Agent({
+      rejectUnauthorized: false,
+    }),
+  });
 
-    if (postParams) {
-      const { data } = await request.post(
-        `/service/${provider}/${method}?${queryDefault}`,
-        postParams
-      );
+  const queryDefault = stringify({
+    output: format,
+    api: apiVersion,
+    apiKey,
+  });
 
-      return data;
-    }
+  if (postParams) {
+    const body = stringify(postParams);
 
-    const query = queryParams ? `${queryParams}&${queryDefault}` : queryDefault;
-
-    const { data } = await request.get(
-      `/service/${provider}/${method}?${query}`
+    const { data } = await request.post(
+      `${provider}/${method}?${queryDefault}`,
+      body
     );
 
     return data;
-  },
+  }
+
+  const query = queryParams
+    ? `${stringify(queryParams)}&${queryDefault}`
+    : queryDefault;
+
+  const { data } = await request.get(`${provider}/${method}?${query}`);
+
+  return data;
 };

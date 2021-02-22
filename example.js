@@ -1,4 +1,6 @@
-const mobizon = require('mobizon-node');
+import 'dotenv/config';
+
+import mobizon from 'mobizon-node';
 
 mobizon.setConfig({
   /** Endpoint do serviço. */
@@ -15,37 +17,12 @@ mobizon.setConfig({
 
   console.log(getBalance);
 
-  /** Encurtar URL */
-  const short = await mobizon.shortCreate({
-    fullLink: 'https://mobizon.com.br',
-    status: 1,
-    expirationDate: '',
-    comment: 'Shortened link.',
+  /** Listar SMS por ID */
+  const getSms = await mobizon.getSms({
+    ids: ['49567', '49566'],
   });
 
-  console.log(short);
-
-  /** Listar link curto */
-  const shortGet = await mobizon.shortGet('05xxi');
-
-  console.log(shortGet);
-
-  /** Atualizar link curto */
-  const shortUpdate = await mobizon.shortUpdate({
-    id: '626',
-    data: {
-      status: 0,
-      expirationDate: '',
-      comment: 'Updated link.',
-    },
-  });
-
-  console.log(shortUpdate);
-
-  /** Deletar link encurtado by ID */
-  const shortDelete = await mobizon.shortDelete(['532']);
-
-  console.log(shortDelete);
+  console.log(getSms);
 
   /** Enviar SMS */
   const sendSms = await mobizon.sendSms({
@@ -55,11 +32,6 @@ mobizon.setConfig({
   });
 
   console.log(sendSms);
-
-  /** Listar SMS por ID */
-  const getSms = await mobizon.getSms(['49567', '49566']);
-
-  console.log(getSms);
 
   /** Listar todos os SMS enviados */
   const listSms = await mobizon.listSms({
@@ -76,4 +48,70 @@ mobizon.setConfig({
   });
 
   console.dir(listSms, { depth: null });
+
+  /** Listar link curto by ID */
+  const getShort = await mobizon.getShort({
+    code: '92qe4',
+  });
+
+  console.log(getShort);
+
+  /** Listar Links encurtados */
+  const listShort = await mobizon.listShort({
+    criteria: {
+      status: '1',
+      moderatorStatus: '1',
+    },
+    pagination: {
+      currentPage: '2',
+      pageSize: '50',
+    },
+    sort: {
+      clickCnt: 'ASC',
+    },
+  });
+
+  console.dir(listShort, { depth: null });
+
+  /** Encurtar URL */
+  const createShort = await mobizon.createShort({
+    data: {
+      fullLink: 'https://mobizon.com.br',
+      status: 1,
+      expirationDate: '',
+      comment: 'Shortened link.',
+    },
+  });
+
+  console.log(createShort);
+
+  /** Deletar link encurtado by ID */
+  const deleteShort = await mobizon.deleteShort({
+    ids: ['718', '697', '689'],
+  });
+
+  console.log(deleteShort);
+
+  /** Atualizar link encurtado */
+  const updateShort = await mobizon.updateShort({
+    id: '723',
+    data: {
+      status: 1,
+      expirationDate: '',
+      comment: 'Updated link.',
+    },
+  });
+
+  console.log(updateShort);
+
+  /** Listar status dos links encurtados by ID */
+  const getStatsShort = await mobizon.getStatsShort({
+    ids: ['723', '722'],
+    type: 'monthly',
+    criteria: {
+      dateFrom: '2021-01-01 13:30:00',
+    },
+  });
+
+  console.dir(getStatsShort, { depth: null });
 })();

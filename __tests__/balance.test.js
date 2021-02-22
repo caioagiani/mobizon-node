@@ -1,4 +1,4 @@
-const mobizon = require('./config');
+import mobizon from './config';
 
 describe('Mobizon balance', () => {
   it('should receive the account balance', async () => {

@@ -1,4 +1,4 @@
-const mobizon = require('./config');
+import mobizon from './config';
 
 describe('Mobizon sms methods', () => {
   const recipient = process.env.NUMBER;
@@ -23,13 +23,15 @@ describe('Mobizon sms methods', () => {
   });
 
   it('should list the sms sent by id', async () => {
-    const response = await mobizon.getSms(responseValues[0].messageId);
+    const response = await mobizon.getSms({
+      ids: [responseValues[0].messageId],
+    });
 
     expect(response.code).toBe(0);
   });
 
   it('should throw error when listing sms by id', async () => {
-    const response = await mobizon.getSms([]);
+    const response = await mobizon.getSms({});
 
     expect(response.code).not.toBe(0);
   });

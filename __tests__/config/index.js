@@ -1,4 +1,4 @@
-const mobizon = require('../../src/index');
+import mobizon from '../../src';
 
 mobizon.setConfig({
   apiServer: 'https://api.mobizon.com.br',
@@ -6,4 +6,4 @@ mobizon.setConfig({
   format: 'json',
 });
 
-module.exports = mobizon;
+export default mobizon;

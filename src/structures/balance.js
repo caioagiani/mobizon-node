@@ -1,7 +1,5 @@
-const { mobizon } = require('../services/mobizon');
+import mobizon from '../services/mobizon';
 
-module.exports = {
-  get() {
-    return mobizon.call(this, 'user', 'getownbalance');
-  },
+export default {
+  get: () => mobizon('user', 'getownbalance'),
 };

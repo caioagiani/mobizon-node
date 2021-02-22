@@ -1,4 +1,4 @@
-export default {
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});exports. default = {
   /**
    * User API key.
    * Each user has their key, it represents their access and allows access to API routes.

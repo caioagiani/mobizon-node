@@ -1,29 +1,10 @@
-const { mobizon } = require('../services/mobizon');
+import mobizon from '../services/mobizon';
 
-module.exports = {
-  create({ fullLink, expirationDate, comment }) {
-    const body = {
-      data: {
-        fullLink,
-        status: 1,
-        expirationDate,
-        comment,
-      },
-    };
-
-    return mobizon.call(this, 'link', 'create', body);
-  },
-  delete(ids) {
-    const body = { ids };
-
-    return mobizon.call(this, 'link', 'delete', body);
-  },
-  get(id) {
-    const body = { code: id };
-
-    return mobizon.call(this, 'link', 'get', body);
-  },
-  update(body) {
-    return mobizon.call(this, 'link', 'update', body);
-  },
+export default {
+  get: (body) => mobizon('link', 'get', body),
+  list: (body) => mobizon('link', 'list', body),
+  create: (body) => mobizon('link', 'create', body),
+  delete: (body) => mobizon('link', 'delete', body),
+  update: (body) => mobizon('link', 'update', body),
+  getstats: (body) => mobizon('link', 'getstats', body),
 };

@@ -17,6 +17,7 @@
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/caioagiani/mobizon-node">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/caioagiani/mobizon-node">
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/caioagiani/mobizon-node">
+  <img alt="NPM downloads" src="https://img.shields.io/npm/dt/mobizon-node?color=blue">
   <img alt="GitHub license" src="https://img.shields.io/badge/license-MIT-blue.svg">
 </p>
 
@@ -50,14 +51,16 @@ Confira em [docs](https://github.com/caioagiani/mobizon-node/blob/master/docs) t
   console.log(getBalance);
 
   /** Encurtar URL */
-  const short = await mobizon.shortCreate({
-    fullLink: 'https://mobizon.com.br',
-    status: 1,
-    expirationDate: '',
-    comment: 'Shortened link.',
+  const createShort = await mobizon.createShort({
+    data: {
+      fullLink: 'https://mobizon.com.br',
+      status: 1,
+      expirationDate: '',
+      comment: 'Shortened link.',
+    },
   });
 
-  console.log(short);
+  console.log(createShort);
 
   /** Enviar SMS */
   const sendSms = await mobizon.sendSms({

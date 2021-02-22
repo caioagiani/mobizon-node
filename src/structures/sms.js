@@ -1,18 +1,7 @@
-const { mobizon } = require('../services/mobizon');
-const { urlEncode } = require('../utils/url');
+import mobizon from '../services/mobizon';
 
-module.exports = {
-  send(query) {
-    const queryParams = query ? urlEncode(query) : undefined;
-
-    return mobizon.call(this, 'message', 'sendsmsmessage', null, queryParams);
-  },
-  list(body) {
-    return mobizon.call(this, 'message', 'list', body);
-  },
-  get(ids) {
-    const body = { ids };
-
-    return mobizon.call(this, 'message', 'getsmsstatus', body);
-  },
+export default {
+  get: (body) => mobizon('message', 'getsmsstatus', body),
+  list: (body) => mobizon('message', 'list', body),
+  send: (query) => mobizon('message', 'sendsmsmessage', null, query),
 };
