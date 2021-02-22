@@ -1,4 +1,4 @@
-import mobizon from '../../src';
+import { mobizon } from '../../src';
 
 mobizon.setConfig({
   apiServer: 'https://api.mobizon.com.br',
