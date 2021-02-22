@@ -3,7 +3,7 @@ import balance from './structures/balance';
 import short from './structures/shortlink';
 import sms from './structures/sms';
 
-export default {
+export const mobizon = {
   environment,
   setConfig({ apiServer, apiKey, format }) {
     environment.apiKey = apiKey;

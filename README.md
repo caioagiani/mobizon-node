@@ -30,11 +30,11 @@ Pacote: `npm i mobizon-node` ou `yarn add mobizon-node`
 ## Configuração:
 
 ```js
-const mobizon = require('mobizon-node');
+const { mobizon } = require('mobizon-node');
 
 mobizon.setConfig({
   apiServer: 'https://api.mobizon.com.br',
-  apiKey: process.env.API_KEY,
+  apiKey: 'br01xxxxxx',
   format: 'json',
 });
 ```
@@ -64,7 +64,7 @@ Confira em [docs](https://github.com/caioagiani/mobizon-node/blob/master/docs) t
 
   /** Enviar SMS */
   const sendSms = await mobizon.sendSms({
-    recipient: process.env.NUMBER,
+    recipient: '5511900000000',
     from: '',
     text: 'SMS sent by Mobizon.',
   });

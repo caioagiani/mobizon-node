@@ -19,6 +19,7 @@ module.exports = {
     indent: ['error', 2],
     'no-undef': 0,
     'no-console': 0,
+    'import/prefer-default-export': 0,
     'linebreak-style': ['error', 'unix'],
     'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
