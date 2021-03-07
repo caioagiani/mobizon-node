@@ -49,16 +49,16 @@
     "qs": "^6.9.6"
   },
   "devDependencies": {
-    "@sucrase/jest-plugin": "^2.0.0",
-    "dotenv": "^8.2.0",
-    "eslint": "^7.17.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^7.1.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-import-helpers": "^1.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "prettier": "^2.2.1",
-    "sucrase": "^3.17.1"
+    "@sucrase/jest-plugin": "2.0.0",
+    "dotenv": "8.2.0",
+    "eslint": "7.21.0",
+    "eslint-config-airbnb-base": "14.2.1",
+    "eslint-config-prettier": "7.2.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-import-helpers": "1.1.0",
+    "eslint-plugin-prettier": "3.3.1",
+    "prettier": "2.2.1",
+    "sucrase": "3.17.1"
   },
   "jest": {
     "transform": {
