@@ -59,10 +59,5 @@
     "eslint-plugin-prettier": "3.3.1",
     "prettier": "2.2.1",
     "sucrase": "3.17.1"
-  },
-  "jest": {
-    "transform": {
-      ".(js|jsx|ts|tsx)": "@sucrase/jest-plugin"
-    }
   }
 }

@@ -1,9 +1,14 @@
 import { mobizon } from '../../src';
 
-mobizon.setConfig({
-  apiServer: 'https://api.mobizon.com.br',
-  apiKey: process.env.API_KEY,
-  format: 'json',
-});
+const setConfig = (data) => {
+  const options = {
+    apiServer: 'https://api.mobizon.com.br',
+    apiKey: process.env.API_KEY,
+    format: 'json',
+    ...data,
+  };
 
-export default mobizon;
+  return mobizon.setConfig(options);
+};
+
+export { mobizon, setConfig };
