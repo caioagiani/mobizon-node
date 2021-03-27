@@ -1,43 +1,48 @@
-import mobizon from './config';
+import { setConfig, mobizon } from './config';
+
+const sut = (conf) => setConfig(conf);
 
 describe('Mobizon sms methods', () => {
+  sut({});
+
   const recipient = process.env.NUMBER;
   const responseValues = [];
+  const dataSms = {
+    recipient,
+    from: '',
+    text: 'Sent sms.',
+  };
 
   it('should send a sms', async () => {
-    const response = await mobizon.sendSms({
-      recipient,
-      from: '',
-      text: 'Sent sms.',
-    });
+    const { data, code } = await mobizon.sendSms(dataSms);
 
-    responseValues.push(response.data);
+    responseValues.push(data);
 
-    expect(response.code).toBe(0);
+    expect(code).toBe(0);
   });
 
-  it('should throw error when sending sms', async () => {
-    const response = await mobizon.sendSms({});
+  it('should display error when send sms without parameters', async () => {
+    const { code } = await mobizon.sendSms({});
 
-    expect(response.code).not.toBe(0);
+    expect(code).not.toBe(0);
   });
 
-  it('should list the sms sent by id', async () => {
-    const response = await mobizon.getSms({
+  it('should display list the sms sent by id', async () => {
+    const { code } = await mobizon.getSms({
       ids: [responseValues[0].messageId],
     });
 
-    expect(response.code).toBe(0);
+    expect(code).toBe(0);
   });
 
-  it('should throw error when listing sms by id', async () => {
-    const response = await mobizon.getSms({});
+  it('should display error when list sms by id without parameters', async () => {
+    const { code } = await mobizon.getSms({});
 
-    expect(response.code).not.toBe(0);
+    expect(code).not.toBe(0);
   });
 
-  it('should list the all sms sent', async () => {
-    const response = await mobizon.listSms({
+  it('should display list the all sms sent', async () => {
+    const { code } = await mobizon.listSms({
       criteria: {
         from: '',
       },
@@ -50,6 +55,14 @@ describe('Mobizon sms methods', () => {
       },
     });
 
-    expect(response.code).toBe(0);
+    expect(code).toBe(0);
+  });
+
+  it('should display an error when creating sms with invalid key', async () => {
+    sut({ apiKey: 'invalid_key' });
+
+    const { code } = await mobizon.sendSms(dataSms);
+
+    expect(code).toBe(8);
   });
 });

@@ -1,9 +1,21 @@
-import mobizon from './config';
+import { setConfig, mobizon } from './config';
+
+const sut = (conf) => setConfig(conf);
 
 describe('Mobizon balance', () => {
-  it('should receive the account balance', async () => {
-    const response = await mobizon.getBalance();
+  sut({});
 
-    expect(response.code).toBe(0);
+  it('should display the account balance', async () => {
+    const { code } = await mobizon.getBalance();
+
+    expect(code).toBe(0);
+  });
+
+  it('should display an error when querying the balance with invalid key', async () => {
+    sut({ apiKey: 'invalid_key' });
+
+    const { code } = await mobizon.getBalance();
+
+    expect(code).toBe(8);
   });
 });
