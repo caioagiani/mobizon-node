@@ -5,4 +5,5 @@ module.exports = {
   testEnvironment: 'node',
   transform: { '.(js|jsx|tx|tsx)': '@sucrase/jest-plugin' },
   testMatch: ['**/__tests__/**/*.test.js?(x)'],
+  setupFilesAfterEnv: ['./jest.setup.js'],
 };

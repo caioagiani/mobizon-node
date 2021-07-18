@@ -1,17 +1,14 @@
 import { setConfig, mobizon } from './config';
 
-const sut = (conf) => setConfig(conf);
-
 describe('Mobizon sms methods', () => {
-  sut({});
-
-  const recipient = process.env.NUMBER;
   const responseValues = [];
   const dataSms = {
-    recipient,
+    recipient: process.env.NUMBER,
     from: '',
     text: 'Sent sms.',
   };
+
+  beforeAll(() => setConfig({}));
 
   it('should send a sms', async () => {
     const { data, code } = await mobizon.sendSms(dataSms);
@@ -59,7 +56,7 @@ describe('Mobizon sms methods', () => {
   });
 
   it('should display an error when creating sms with invalid key', async () => {
-    sut({ apiKey: 'invalid_key' });
+    setConfig({ apiKey: 'invalid_key' });
 
     const { code } = await mobizon.sendSms(dataSms);
 

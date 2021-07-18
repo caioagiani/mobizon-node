@@ -4,41 +4,50 @@ var _qs = require('qs');
 
 var _environment = require('../environment'); var _environment2 = _interopRequireDefault(_environment);
 
-exports. default = async (provider, method, postParams, queryParams) => {
-  const { format, apiVersion, apiKey, apiServer } = _environment2.default;
-
+/**
+ * This method is responsible for providing the mobizonService methods.
+ *
+ * @param {string} module
+ * @param {string} method
+ * @param {string} postParams
+ * @param {string} queryParams
+ *
+ * @example mobizonService({ module: 'user', method: 'getownbalance' });
+ *
+ * @returns responseApi
+ * */
+ const mobizonService = async ({
+  module,
+  method,
+  postParams,
+  queryParams,
+}) => {
   const request = _axios.create.call(void 0, {
-    baseURL: `${apiServer}/service`,
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    httpsAgent: new (0, _https.Agent)({
-      rejectUnauthorized: false,
-    }),
+    baseURL: `${_environment2.default.apiServer}/service`,
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    httpsAgent: new (0, _https.Agent)({ rejectUnauthorized: false }),
   });
 
   const queryDefault = _qs.stringify.call(void 0, {
-    output: format,
-    api: apiVersion,
-    apiKey,
+    output: _environment2.default.format,
+    api: _environment2.default.apiVersion,
+    apiKey: _environment2.default.apiKey,
   });
 
   if (postParams) {
-    const body = _qs.stringify.call(void 0, postParams);
-
-    const { data } = await request.post(
-      `${provider}/${method}?${queryDefault}`,
-      body
+    const responsePost = await request.post(
+      `${module}/${method}?${queryDefault}`,
+      _qs.stringify.call(void 0, postParams)
     );
 
-    return data;
+    return responsePost.data;
   }
 
   const query = queryParams
     ? `${_qs.stringify.call(void 0, queryParams)}&${queryDefault}`
     : queryDefault;
 
-  const { data } = await request.get(`${provider}/${method}?${query}`);
+  const { data } = await request.get(`${module}/${method}?${query}`);
 
   return data;
-};
+}; exports.mobizonService = mobizonService;

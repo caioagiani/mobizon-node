@@ -1,9 +1,7 @@
 import { setConfig, mobizon } from './config';
 
-const sut = (conf) => setConfig(conf);
-
 describe('Mobizon balance', () => {
-  sut({});
+  beforeAll(() => setConfig({}));
 
   it('should display the account balance', async () => {
     const { code } = await mobizon.getBalance();
@@ -12,7 +10,7 @@ describe('Mobizon balance', () => {
   });
 
   it('should display an error when querying the balance with invalid key', async () => {
-    sut({ apiKey: 'invalid_key' });
+    setConfig({ apiKey: 'invalid_key' });
 
     const { code } = await mobizon.getBalance();
 

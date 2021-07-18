@@ -75,37 +75,6 @@ Confira em [docs](https://github.com/caioagiani/mobizon-node/blob/master/docs) t
 
 Dê uma olhada em [example.js](https://github.com/caioagiani/mobizon-node/blob/master/example.js) para mais casos de uso.
 
-## Testes
-
-```javascript
- PASS  __tests__/shortlink.test.js (5.569 s)
- PASS  __tests__/sms.test.js
- PASS  __tests__/balance.test.js
-------------------|---------|----------|---------|---------|-------------------
-File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
-------------------|---------|----------|---------|---------|-------------------
-All files         |   99.19 |    83.33 |     100 |   99.19 |
- __tests__/config |     100 |      100 |     100 |     100 |
-  index.js        |     100 |      100 |     100 |     100 |
- src              |   97.73 |       75 |     100 |   97.73 |
-  environment.js  |     100 |      100 |     100 |     100 |
-  index.js        |   95.65 |    66.67 |     100 |   95.65 | 5
- src/services     |     100 |    83.33 |     100 |     100 |
-  mobizon.js      |     100 |    83.33 |     100 |     100 | 7
- src/structures   |     100 |    84.62 |     100 |     100 |
-  balance.js      |     100 |      100 |     100 |     100 |
-  shortlink.js    |     100 |    83.33 |     100 |     100 | 5
-  sms.js          |     100 |       75 |     100 |     100 | 5
-------------------|---------|----------|---------|---------|-------------------
-
-Test Suites: 3 passed, 3 total
-Tests:       20 passed, 20 total
-Snapshots:   0 total
-Time:        12.374 s
-Ran all test suites.
-Done in 15.49s.
-```
-
 ## Licença
 
 Copyright © 2021 [caioagiani](https://github.com/caioagiani).<br />

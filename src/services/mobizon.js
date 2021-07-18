@@ -4,41 +4,50 @@ import { stringify } from 'qs';
 
 import environment from '../environment';
 
-export default async (provider, method, postParams, queryParams) => {
-  const { format, apiVersion, apiKey, apiServer } = environment;
-
+/**
+ * This method is responsible for providing the mobizonService methods.
+ *
+ * @param {string} module
+ * @param {string} method
+ * @param {string} postParams
+ * @param {string} queryParams
+ *
+ * @example mobizonService({ module: 'user', method: 'getownbalance' });
+ *
+ * @returns responseApi
+ * */
+export const mobizonService = async ({
+  module,
+  method,
+  postParams,
+  queryParams,
+}) => {
   const request = create({
-    baseURL: `${apiServer}/service`,
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    httpsAgent: new Agent({
-      rejectUnauthorized: false,
-    }),
+    baseURL: `${environment.apiServer}/service`,
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    httpsAgent: new Agent({ rejectUnauthorized: false }),
   });
 
   const queryDefault = stringify({
-    output: format,
-    api: apiVersion,
-    apiKey,
+    output: environment.format,
+    api: environment.apiVersion,
+    apiKey: environment.apiKey,
   });
 
   if (postParams) {
-    const body = stringify(postParams);
-
-    const { data } = await request.post(
-      `${provider}/${method}?${queryDefault}`,
-      body
+    const responsePost = await request.post(
+      `${module}/${method}?${queryDefault}`,
+      stringify(postParams)
     );
 
-    return data;
+    return responsePost.data;
   }
 
   const query = queryParams
     ? `${stringify(queryParams)}&${queryDefault}`
     : queryDefault;
 
-  const { data } = await request.get(`${provider}/${method}?${query}`);
+  const { data } = await request.get(`${module}/${method}?${query}`);
 
   return data;
 };

@@ -1,6 +1,6 @@
 {
   "name": "mobizon-node",
-  "version": "0.3.1",
+  "version": "0.3.6",
   "description": "Biblioteca NodeJS para trabalhar com os serviços Mobizon API",
   "readmeFilename": "README.md",
   "main": "dist/index.js",
@@ -16,11 +16,8 @@
     "A2P",
     "es6"
   ],
-  "author": {
-    "name": "Caio Agiani",
-    "email": "caio.agiani@mobizon.com.br",
-    "homepage": "https://mobizon.com.br"
-  },
+  "homepage": "https://mobizon.com.br",
+  "author": "Caio Agiani <caio.agiani@mobizon.com.br>",
   "contributors": [
     {
       "name": "Caio Agiani",
@@ -39,25 +36,28 @@
     "lint": "eslint src --ext .js",
     "build": "sucrase ./src -d ./dist --transforms imports",
     "dev:start": "sucrase-node example.js",
-    "dev:test": "yarn lint && jest --setupFiles dotenv/config --detectOpenHandles --forceExit",
+    "dev:test": "yarn lint && jest --setupFiles dotenv/config --detectOpenHandles --forceExit --coverage",
     "dev:test:clear": "jest --clearCache"
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "jest": "^26.6.3",
+    "jest": "^26.4.2",
     "mobizon-node": "^0.3.0",
     "qs": "^6.9.6"
   },
   "devDependencies": {
     "@sucrase/jest-plugin": "2.1.0",
-    "dotenv": "8.2.0",
-    "eslint": "7.25.0",
+    "dotenv": "10.0.0",
+    "eslint": "7.31.0",
     "eslint-config-airbnb-base": "14.2.1",
-    "eslint-config-prettier": "8.2.0",
-    "eslint-plugin-import": "2.23.2",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.23.4",
     "eslint-plugin-import-helpers": "1.1.0",
     "eslint-plugin-prettier": "3.4.0",
-    "prettier": "2.2.1",
-    "sucrase": "3.18.1"
+    "prettier": "2.3.2",
+    "sucrase": "3.20.0"
+  },
+  "engines": {
+    "node": ">=10"
   }
 }
