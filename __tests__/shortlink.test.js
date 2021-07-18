@@ -1,10 +1,6 @@
 import { setConfig, mobizon } from './config';
 
-const sut = (conf) => setConfig(conf);
-
 describe('Mobizon short methods', () => {
-  sut({});
-
   const responseValues = [];
   const dataShort = {
     data: {
@@ -14,6 +10,8 @@ describe('Mobizon short methods', () => {
       comment: 'Created short link.',
     },
   };
+
+  beforeAll(() => setConfig({}));
 
   it('should create short link', async () => {
     const { data, code } = await mobizon.createShort(dataShort);
@@ -114,7 +112,7 @@ describe('Mobizon short methods', () => {
   });
 
   it('should display an error when creating short link with invalid key', async () => {
-    sut({ apiKey: 'invalid_key' });
+    setConfig({ apiKey: 'invalid_key' });
 
     const { code } = await mobizon.createShort(dataShort);
 
