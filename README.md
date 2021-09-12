@@ -77,5 +77,6 @@ Dê uma olhada em [example.js](https://github.com/caioagiani/mobizon-node/blob/m
 
 ## Licença
 
+Documentação [pt-BR](https://mobizon.docs.apiary.io/).<br />
 Copyright © 2021 [caioagiani](https://github.com/caioagiani).<br />
 Este projeto é licenciado [MIT](https://github.com/caioagiani/mobizon-node/blob/master/LICENSE).
