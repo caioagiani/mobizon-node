@@ -1,6 +1,6 @@
 import 'dotenv/config';
 
-import { mobizon } from 'mobizon-node';
+import { mobizon } from './src';
 
 mobizon.setConfig({
   apiServer: 'https://api.mobizon.com.br' /** Endpoint do serviço. */,
