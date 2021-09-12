@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "mobizon-node": "^0.3.0",
+    "mobizon-node": "^0.4.0",
     "qs": "^6.9.6"
   },
   "devDependencies": {
