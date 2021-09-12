@@ -22,13 +22,13 @@ var _mobizon = require('./services/mobizon');
 
   /**
    * Getting of balance information.
-   * [Method getownbalance*]{@link https://mobizon.com.br/help/api-docs/user#GetOwnBalance}
+   * [Method user#getownbalance*]{@link https://mobizon.com.br/help/api-docs/user#GetOwnBalance}
    * */
   getBalance: () => _mobizon.mobizonService.call(void 0, { module: 'user', method: 'getownbalance' }),
 
   /**
    * Sending of a single message.
-   * [Method sendsmsmessage*]{@link https://mobizon.com.br/help/api-docs/message#SendSmsMessage}
+   * [Method message#sendsmsmessage*]{@link https://mobizon.com.br/help/api-docs/message#SendSmsMessage}
    * */
   sendSms: (data) =>
     _mobizon.mobizonService.call(void 0, {
@@ -39,7 +39,7 @@ var _mobizon = require('./services/mobizon');
 
   /**
    * Getting of SMS message delivery status report.
-   * [Method getsmsstatus*]{@link https://mobizon.com.br/help/api-docs/message#GetSMSStatus}
+   * [Method message#getsmsstatus*]{@link https://mobizon.com.br/help/api-docs/message#GetSMSStatus}
    * */
   getSms: (data) =>
     _mobizon.mobizonService.call(void 0, {
@@ -50,42 +50,42 @@ var _mobizon = require('./services/mobizon');
 
   /**
    * Getting of the list of SMS messages.
-   * [Method list*]{@link https://mobizon.com.br/help/api-docs/message#List}
+   * [Method message#list*]{@link https://mobizon.com.br/help/api-docs/message#List}
    * */
   listSms: (data) =>
     _mobizon.mobizonService.call(void 0, { module: 'message', method: 'list', postParams: data }),
 
   /**
    * Getting of the link.
-   * [Method get*]{@link https://mobizon.com.br/help/api-docs/link#Get}
+   * [Method link#get*]{@link https://mobizon.com.br/help/api-docs/link#Get}
    * */
   getShort: (data) =>
     _mobizon.mobizonService.call(void 0, { module: 'link', method: 'get', postParams: data }),
 
   /**
    * Getting of the list of links.
-   * [Method list*]{@link https://mobizon.com.br/help/api-docs/link#List}
+   * [Method link#list*]{@link https://mobizon.com.br/help/api-docs/link#List}
    * */
   listShort: (data) =>
     _mobizon.mobizonService.call(void 0, { module: 'link', method: 'list', postParams: data }),
 
   /**
    * Creation of a new short link.
-   * [Method create*]{@link https://mobizon.com.br/help/api-docs/link#Create}
+   * [Method link#create*]{@link https://mobizon.com.br/help/api-docs/link#Create}
    * */
   createShort: (data) =>
     _mobizon.mobizonService.call(void 0, { module: 'link', method: 'create', postParams: data }),
 
   /**
    * Short links deletion.
-   * [Method delete*]{@link https://mobizon.com.br/help/api-docs/link#Delete}
+   * [Method link#delete*]{@link https://mobizon.com.br/help/api-docs/link#Delete}
    * */
   deleteShort: (data) =>
     _mobizon.mobizonService.call(void 0, { module: 'link', method: 'delete', postParams: data }),
 
   /**
    * Short link's data editing.
-   * [Method update*]{@link https://mobizon.com.br/help/api-docs/link#Update}
+   * [Method link#update*]{@link https://mobizon.com.br/help/api-docs/link#Update}
    * */
   updateShort: (data) =>
     _mobizon.mobizonService.call(void 0, { module: 'link', method: 'update', postParams: data }),
@@ -96,4 +96,37 @@ var _mobizon = require('./services/mobizon');
    * */
   getStatsShort: (data) =>
     _mobizon.mobizonService.call(void 0, { module: 'link', method: 'getstats', postParams: data }),
+
+  /**
+   * Create contact group.
+   * [Method contactgroup#create*]{@link https://mobizon.com.br/panel#contacts}
+   * */
+  createContactGroup: (data) =>
+    _mobizon.mobizonService.call(void 0, {
+      module: 'contactgroup',
+      method: 'create',
+      postParams: data,
+    }),
+
+  /**
+   * Delete contact group.
+   * [Method contactgroup#delete*]{@link https://mobizon.com.br/panel#contacts}
+   * */
+  deleteContactGroup: (data) =>
+    _mobizon.mobizonService.call(void 0, {
+      module: 'contactgroup',
+      method: 'delete',
+      postParams: data,
+    }),
+
+  /**
+   * List contact group.
+   * [Method contactgroup#list*]{@link https://mobizon.com.br/panel#contacts}
+   * */
+  listContactGroup: (data) =>
+    _mobizon.mobizonService.call(void 0, {
+      module: 'contactgroup',
+      method: 'list',
+      postParams: data,
+    }),
 }; exports.mobizon = mobizon;

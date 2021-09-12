@@ -1,6 +1,6 @@
 import { setConfig, mobizon } from './config';
 
-describe('Mobizon short methods', () => {
+describe('Mobizon short-link methods', () => {
   const responseValues = [];
   const dataShort = {
     data: {

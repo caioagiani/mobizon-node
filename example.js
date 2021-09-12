@@ -3,12 +3,9 @@ import 'dotenv/config';
 import { mobizon } from 'mobizon-node';
 
 mobizon.setConfig({
-  /** Endpoint do serviço. */
-  apiServer: 'https://api.mobizon.com.br',
-  /** Chave de acesso do usuário. */
-  apiKey: process.env.API_KEY,
-  /** Retorno da requisição (json, xml), por padrão é json. */
-  format: 'json',
+  apiServer: 'https://api.mobizon.com.br' /** Endpoint do serviço. */,
+  apiKey: process.env.API_KEY /** Chave de acesso do usuário. */,
+  format: 'json' /** Retorno da requisição (json, xml), por padrão é json. */,
 });
 
 (async () => {
@@ -114,4 +111,36 @@ mobizon.setConfig({
   });
 
   console.dir(getStatsShort, { depth: null });
+
+  /** Criar novo grupo */
+  const createContactGroup = await mobizon.createContactGroup({
+    data: {
+      name: 'Mobizon API',
+    },
+  });
+
+  console.log(createContactGroup);
+
+  /** Listar grupo de contatos */
+  const listContactGroup = await mobizon.listContactGroup({
+    pagination: {
+      currentPage: 0,
+      pageSize: 25,
+    },
+    criteria: {
+      name: 'Mobizon API',
+    },
+    sort: {
+      name: 'ASC',
+    },
+  });
+
+  console.log(listContactGroup);
+
+  /** Deletar grupo de contatos */
+  const deleteContactGroup = await mobizon.deleteContactGroup({
+    id: '331',
+  });
+
+  console.log(deleteContactGroup);
 })();
