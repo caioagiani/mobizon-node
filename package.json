@@ -1,6 +1,6 @@
 {
   "name": "mobizon-node",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Biblioteca NodeJS para trabalhar com os serviços Mobizon API",
   "readmeFilename": "README.md",
   "main": "dist/index.js",
@@ -46,7 +46,7 @@
     "qs": "^6.9.6"
   },
   "devDependencies": {
-    "jest": "^26.4.2",
+    "jest": "27.1.1",
     "@sucrase/jest-plugin": "2.1.1",
     "dotenv": "10.0.0",
     "eslint": "7.32.0",
