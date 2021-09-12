@@ -1,6 +1,6 @@
 {
   "name": "mobizon-node",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Biblioteca NodeJS para trabalhar com os serviços Mobizon API",
   "readmeFilename": "README.md",
   "main": "dist/index.js",
