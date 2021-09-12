@@ -41,6 +41,8 @@ export declare namespace mobizon {
     apiKey: string
     /** @default 'json' */
     format: 'json' | 'xml'
+    /** @default 'v1' */
+    apiVersion?: 'v1'
   }
 
   /** Pagination */
