@@ -41,7 +41,7 @@
     "dev:test:clear": "jest --clearCache"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.24.0",
     "qs": "^6.9.6"
   },
   "devDependencies": {
