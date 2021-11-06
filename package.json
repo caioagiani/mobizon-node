@@ -48,7 +48,7 @@
     "jest": "27.1.1",
     "@sucrase/jest-plugin": "2.1.1",
     "dotenv": "10.0.0",
-    "eslint": "7.32.0",
+    "eslint": "8.2.0",
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-import": "2.24.2",
