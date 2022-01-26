@@ -24,7 +24,7 @@ export declare namespace mobizon {
   function  listSms(data: PayloadListSMS): Promise<ListSMS>;
 
   /** StatusSMS */
-    type StatusSMS = 
+  type StatusSMS = 
     'DELIVRD' | 
     'NEW'     | 
     'ENQUEUD' | 
@@ -87,7 +87,13 @@ export declare namespace mobizon {
   export interface PayloadSendSMS {
     recipient: string,
     from: string,
-    text: string
+    text: string,
+    params?: {
+      name: string,
+      deferredToTs: string,
+      mclass: number,
+      validity: number
+    }
   }
 
   /** SendSMS */
