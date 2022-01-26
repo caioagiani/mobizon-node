@@ -55,6 +55,41 @@ describe('Mobizon sms methods', () => {
     expect(code).toBe(0);
   });
 
+  it('should send SMS scheduled', async () => {
+    const deferredToTs = new Date()
+      .toISOString()
+      .replace('T', ' ')
+      .slice(0, 19);
+
+    const {
+      code,
+      data: { status },
+    } = await mobizon.sendSms({
+      ...dataSms,
+      params: {
+        name: 'Campaign scheduled.',
+        deferredToTs,
+      },
+    });
+
+    expect(code).toBe(0);
+    expect(status).toBe(2);
+  });
+
+  it('should display an error send SMS scheduled', async () => {
+    const { code, message } = await mobizon.sendSms({
+      ...dataSms,
+      params: {
+        deferredToTs: new Date(),
+      },
+    });
+
+    expect(code).toBe(1);
+    expect(message).toBe(
+      'Um ou mais campos contêm dados incorretos. Verifique os erros e tente novamente.'
+    );
+  });
+
   it('should display an error when creating sms with invalid key', async () => {
     setConfig({ apiKey: 'invalid_key' });
 
