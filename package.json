@@ -52,7 +52,7 @@
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-import": "2.24.2",
-    "eslint-plugin-import-helpers": "1.1.0",
+    "eslint-plugin-import-helpers": "1.2.1",
     "eslint-plugin-prettier": "4.0.0",
     "prettier": "2.4.0",
     "sucrase": "3.20.1"
