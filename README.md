@@ -73,7 +73,7 @@ Confira em [docs](https://github.com/caioagiani/mobizon-node/blob/master/docs) t
 })();
 ```
 
-Dê uma olhada em [example.js](https://github.com/caioagiani/mobizon-node/blob/master/example.js) para mais casos de uso.
+Dê uma olhada em [examples](https://github.com/caioagiani/mobizon-node/blob/master/examples) para mais casos de uso.
 
 ## Licença
 
