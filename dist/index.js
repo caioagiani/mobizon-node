@@ -129,4 +129,16 @@ var _mobizon = require('./services/mobizon');
       method: 'list',
       postParams: data,
     }),
+
+  /**
+   *
+   * List public price.
+   * [Method listpublicprice#list*]{@link https://mobizon.com.br/prices}
+   * */
+  listPublicPrice: (data) =>
+    _mobizon.mobizonService.call(void 0, {
+      module: 'price',
+      method: 'listpublic',
+      postParams: data,
+    }),
 }; exports.mobizon = mobizon;
