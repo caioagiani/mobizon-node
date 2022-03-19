@@ -21,7 +21,12 @@ export declare namespace mobizon {
   /**
    * Getting of the list of SMS messages.
    * */
-  function  listSms(data: PayloadListSMS): Promise<ListSMS>;
+  function listSms(data: PayloadListSMS): Promise<ListSMS>;
+  
+  /**
+   * Getting Prices.
+   * */
+  function listPublicPrice(data: PayloadListPublicPrice): Promise<ListPublicPrice>;
 
   /** StatusSMS */
   type StatusSMS = 
@@ -49,7 +54,7 @@ export declare namespace mobizon {
   export interface Pagination {
     pagination: {
       currentPage: string,
-      pageSize: string,
+      pageSize: string
     }
   }
 
@@ -72,6 +77,13 @@ export declare namespace mobizon {
     ids: string[]
   }
 
+  /** PayloadListPublicPrice */
+  export interface PayloadListPublicPrice {
+    countryA2: string,
+    currency: string,
+    language: string
+  }
+
   /** Response */
   export interface Response {
     code: number, 
@@ -80,7 +92,7 @@ export declare namespace mobizon {
 
   /** Balance */
   export interface Balance extends Response {
-    data: DataBalance, 
+    data: DataBalance
   }
 
   /** PayloadSendSMS */
@@ -98,7 +110,7 @@ export declare namespace mobizon {
 
   /** SendSMS */
   export interface SendSMS extends Response {
-    data: DataSendSMS,
+    data: DataSendSMS
   }
 
   /** DataGetSMS */
@@ -112,7 +124,7 @@ export declare namespace mobizon {
 
   /** GetSMS */
   export interface GetSMS extends Response {
-    data: DataGetSMS[],
+    data: DataGetSMS[]
   }
 
   /** PayloadListSMS */
@@ -122,7 +134,7 @@ export declare namespace mobizon {
     },
     sort?: {
       campaignId?: 'ASC' | 'DESC',
-    },
+    }
   }
 
   /** DataListSMS */
@@ -153,7 +165,7 @@ export declare namespace mobizon {
     segSystemBuy?: string | unknown | undefined,
     systemCurrency?: string | unknown | undefined,
     campaign: {
-      commonStatus: string,
+      commonStatus: string
     }
   }
 
@@ -163,5 +175,16 @@ export declare namespace mobizon {
       items: DataListSMS[],
       totalItemCount: string
     }
+  }
+
+  /** ListPublicPrice */
+  export interface ListPublicPrice {
+    priceGroups: unknown | undefined,
+    prices: Array<unknown | undefined>
+  }
+
+  /** ListPublicPrice */
+  export interface ListPublicPrice extends Response {
+    data: ListPublicPrice
   }
 }

@@ -1,4 +1,4 @@
-import { setConfig, mobizon } from './config';
+import { setConfig, mobizon } from './config/setup';
 
 describe('Mobizon short-link methods', () => {
   const responseValues = [];

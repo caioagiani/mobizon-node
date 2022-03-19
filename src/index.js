@@ -129,4 +129,16 @@ export const mobizon = {
       method: 'list',
       postParams: data,
     }),
+
+  /**
+   *
+   * List public price.
+   * [Method listpublicprice#list*]{@link https://mobizon.com.br/prices}
+   * */
+  listPublicPrice: (data) =>
+    mobizonService({
+      module: 'price',
+      method: 'listpublic',
+      postParams: data,
+    }),
 };
