@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "jest": "28",
-    "@sucrase/jest-plugin": "2.2.1",
+    "@sucrase/jest-plugin": "3.0.0",
     "dotenv": "16.0.1",
     "eslint": "8.18.0",
     "eslint-config-airbnb-base": "15.0.0",
